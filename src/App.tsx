@@ -8,8 +8,12 @@ function App() {
   const [count, setCount] = useState(0);
 
   init({}).then((instance) => {
-    // instance.exports.test();
-    console.log(instance);
+    const { add, main } = instance.exports as {
+      add: (a: number, b: number) => number;
+      main: () => number;
+    };
+    console.log("add", add(1, 2));
+    console.log("main", main());
   });
 
   return (
